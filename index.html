@@ -8,32 +8,48 @@
     <!-- bootsrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- custom css  -->
+    <link rel="stylesheet" href="css/style.css">
     <title>Book Archive</title>
 </head>
 
 <body>
+    <!-- header section starts -->
     <header class="bg-dark mb-3">
-        <h1 class="text-center text-warning py-3">Welcome to JavaScript Book Archive</h1>
+        <h1 class="text-center text-warning py-3">Welcome to Books Archive</h1>
         <hr>
     </header>
+    <!-- header section ends -->
+
+    <!-- main section  starts-->
     <main>
-        <!-- book search area  -->
-        <div class="input-group my-5 w-50 mx-auto">
-            <input id="search-field" type="text" class="form-control" placeholder="Search the book you want"
-                aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button onclick="searchFood()" class="btn btn-outline-secondary" type="button"
-                id="button-addon2">Search</button>
+        <div class="container">
+            <!-- book search area  -->
+            <div class="input-group my-5 w-50 mx-auto">
+                <input id="search-field" type="text" class="form-control" placeholder="Search the book you want"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button id="search-btn" class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+
+            <hr class=" w-75 mx-auto">
+
+            <!-- spinner  -->
+            <div id="spinner" class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <!-- display message -->
+            <h3 class="w-75 text-center text-success my-3"><span id="found-title">Your searching result will show
+                    here:</span>
+            </h3>
+            <!-- book search result  -->
+            <div id="search-result" class="container row g-4 mx-auto"></div>
         </div>
-        <hr class=" w-75 mx-auto">
-        <h3 class="w-75 mx-auto text-success mb-3">Search Results here : </h3>
-
     </main>
+    <!-- main section  ends-->
 
-    <footer>
-
-    </footer>
-
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
