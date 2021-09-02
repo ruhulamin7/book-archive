@@ -1,19 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .card-style {
-  margin: 20px;
-  padding: 20px;
+  margin: 0px;
+  padding: 10px;
   border-radius: 10px;
-  margin-bottom: 20px;
   box-shadow: 1px 1px 20px #d4d4d4;
 }
-.card {
-  margin: 10px;
-}
 .card-style img {
-  border-radius: 10px;
   width: 250px;
   margin: 0 auto;
   max-height: 300px;
-  padding: 20px;
+  width: 100%;
 }
 #search-result {
   display: grid;

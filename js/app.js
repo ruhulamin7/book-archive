@@ -40,22 +40,25 @@ const displaySearchResult = books => {
     }
 
     books.docs.forEach(book => {
+        // create div
         const div = document.createElement('div');
         div.classList.add('card-style');
-        // div.classList.add('justify-content-center')
         div.classList.add('card')
-
         //  adding innerHTML and swowing dynamic result
+        const imgFound = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+        const imgNotFound = `images/MM63611493626166.png`;
+
         div.innerHTML = `
-        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" 
-        class="card-img-top" alt="Image Not Found">
+        <div class="card-img-top">
+         ${book.cover_i ? `<img src=${imgFound}>` : `<img src=${imgNotFound}>`}
+        </div>
         <div class="card-body">
             <h5 class="card-title">Book Name : ${book.title}</h5> 
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Author Name : ${book.author_name}</li>
-            <li class="list-group-item">Publisher : ${book.publisher}</li>
-            <li class="list-group-item">First Publish : ${book.first_publish_year}</li>
+            <li class="list-group-item"><strong>Author Name</strong> : ${book.author_name}</li>
+            <li class="list-group-item"><strong>Publisher</strong> : ${book.publisher}</li>
+            <li class="list-group-item"><strong>First Publish</strong> : ${book.first_publish_year}</li>
         </ul>
         `;
         searchResultDiv.appendChild(div);
