@@ -2,7 +2,7 @@
 // common variable declaration 
 document.getElementById('spinner').style.display = 'none';
 const spinner = document.getElementById('spinner');
-const searchButton = document.getElementById('search-btn')
+const searchButton = document.getElementById('search-btn');
 const message = document.getElementById('found-title');
 const searchField = document.getElementById('search-field');
 const searchResultDiv = document.getElementById('search-result');
@@ -13,40 +13,42 @@ searchButton.addEventListener('click', function () {
     const searchText = searchField.value;
     // searching keyword validation checking
     if (searchText === '') {
-        message.innerText = `Please Type a book name.`;
+        message.innerText = `Please input a book name.`;
         spinner.style.display = 'none';
         // clearing previus searched result
-        searchResultDiv.textContent = ''
+        searchResultDiv.textContent = '';
         return;
-    }
+    };
     // getting API data
-    const url = `http://openlibrary.org/search.json?q=$%7BsearchText%7D=${searchText}`
+    const url = `https://openlibrary.org/search.json?q=$%7BsearchText%7D=${searchText}`
     // clearing input field
-    searchField.value = ''
+    searchField.value = '';
     fetch(url)
         .then(res => res.json())
         .then(data => displaySearchResult(data))
-})
+});
 
 // desplaying search result
 const displaySearchResult = books => {
-    document.getElementById('search-result').textContent = ''
+    searchResultDiv.textContent = '';
     if (books.numFound === 0) {
-        message.innerText = `No books found !`;
+        message.innerText = `No result found !`;
         spinner.style.display = 'none';
     } else {
-        message.innerText = `Total books found : ${books.numFound}, displaying books : ${books.docs.length}`;
+        message.innerText = `Total books found : ${books.numFound}, Displaying books : ${books.docs.length}`;
         spinner.style.display = 'none';
     }
 
     books.docs.forEach(book => {
         const div = document.createElement('div');
         div.classList.add('card-style');
-        div.classList.add('mb-5');
+        // div.classList.add('justify-content-center')
+        div.classList.add('card')
+
         //  adding innerHTML and swowing dynamic result
         div.innerHTML = `
-        <div class="card" style="width: 18rem;">
-        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="...">
+        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" 
+        class="card-img-top" alt="Image Not Found">
         <div class="card-body">
             <h5 class="card-title">Book Name : ${book.title}</h5> 
         </div>
@@ -55,8 +57,7 @@ const displaySearchResult = books => {
             <li class="list-group-item">Publisher : ${book.publisher}</li>
             <li class="list-group-item">First Publish : ${book.first_publish_year}</li>
         </ul>
-        </div>
         `;
         searchResultDiv.appendChild(div);
     });
-}
+};
